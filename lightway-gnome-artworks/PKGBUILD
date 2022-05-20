@@ -1,0 +1,23 @@
+pkgname=lightway-gnome-artworks
+_pkgname=lightway-gnome-artworks
+pkgver=22
+_pkgver=22
+pkgrel=1
+pkgdesc="Lightway GNOME Edition's artwork"
+arch=('any')
+url="https://lightway-linux.github.io"
+license=('GPL3')
+depends=('gnome-shell' 'gdm')
+conflicts=('lightway-kde-artworks' 'lightway-xfce-artworks' 'lightway-cinnamon-artworks')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/lightway-linux/lightway-gnome-artworks/releases/download/22/lightway-gnome-artworks-22.tar.gz)
+sha256sums=('b61a47a76f4c91fa99d4c47aba14aae3493cb1417422333095eae0bad7ee0cc9')
+
+package() {
+	install -d ${pkgdir}/etc
+	cp -r skel ${pkgdir}/etc
+	install -d ${pkgdir}/usr/share/glib-2.0;
+	cp -r schemas ${pkgdir}/usr/share/glib-2.0;
+	install -d ${pkgdir}/usr/share;
+	cp -r backgrounds ${pkgdir}/usr/share
+	cp -r gnome-background-properties ${pkgdir}/usr/share
+}
