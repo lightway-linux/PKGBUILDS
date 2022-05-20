@@ -1,0 +1,16 @@
+pkgname=wine-fake-kor-fonts
+pkgver=1.0
+_pkgver=1.0
+pkgrel=1
+pkgdesc="Gulim, Malgun Gothic's replacement fonts for Wine"
+arch=('any')
+url="https://lightway-linux.github.io"
+license=('GPL3')
+depends=('wine')
+source=(${pkgname}.tar.xz::https://github.com/lightway-linux/wine-fake-kor-fonts/releases/download/1.0/wine-fake-kor-fonts.tar.xz)
+sha256sums=('236ed6c287e92510a470833620494625f09ced551312647e5309a05c03d067a4')
+
+package() {
+	install -d ${pkgdir}/usr/share/wine
+	cp -r fonts ${pkgdir}/usr/share/wine
+}
